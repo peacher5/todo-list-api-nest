@@ -1,4 +1,4 @@
-import { Injectable, HttpException } from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
 import { Todo } from './todos.interface'
 import { AddTodoDto } from './dto/add-todo.dto'
 import { UpdateTodoDto } from './dto/update-todo.dto'
