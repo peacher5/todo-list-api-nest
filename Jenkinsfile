@@ -1,24 +1,19 @@
 pipeline {
-  agent {
-    docker {
-      image 'node:12.18.3-alpine'
-      args '-p 3000:3000'
-    }
+  agent any
 
-  }
   stages {
-    stage('Build') {
+    def image
+
+    stage('Build image') {
       steps {
-        sh 'npm install'
-        sh 'npm run build'
+        image = docker.build("todo-list-api-nest:${env.BUILD_ID}")
       }
     }
 
     stage('Deploy') {
       steps {
-        sh 'npm start'
+        image.run('-p 3000:3000')
       }
     }
-
   }
 }
