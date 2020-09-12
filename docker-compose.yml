@@ -5,3 +5,7 @@ services:
     build: .
     ports:
       - '3000:3000'
+    environment:
+      APP_NAME: todo-list-api-nest
+      VERSION: ${VERSION}
+      COMMIT_ID: ${COMMIT_ID}

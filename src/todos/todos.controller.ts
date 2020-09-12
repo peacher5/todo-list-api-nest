@@ -10,6 +10,7 @@ import {
   Delete,
   Put
 } from '@nestjs/common'
+
 import { TodosService } from './todos.service'
 import { Todo } from './todos.interface'
 import { AddTodoDto } from './dto/add-todo.dto'
@@ -39,7 +40,10 @@ export class TodosController {
   }
 
   @Put(':id')
-  async updateTodo(@Param('id', ParseIntPipe) id: number, @Body() todo: UpdateTodoDto): Promise<Todo> {
+  async updateTodo(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() todo: UpdateTodoDto
+  ): Promise<Todo> {
     return this.todoService.updateTodo(id, todo)
   }
 

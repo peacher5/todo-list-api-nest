@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common'
+
 import { Todo } from './todos.interface'
 import { AddTodoDto } from './dto/add-todo.dto'
 import { UpdateTodoDto } from './dto/update-todo.dto'
@@ -28,7 +29,7 @@ export class TodosService {
   }
 
   updateTodo(id: number, todo: UpdateTodoDto): Todo {
-    const index = this.todos.findIndex(todo => todo.id === id)
+    const index = this.todos.findIndex(t => t.id === id)
 
     if (index === -1) {
       throw new Error(`Todo (id=${id}) does not exist`)

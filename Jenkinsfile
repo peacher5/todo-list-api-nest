@@ -4,7 +4,17 @@ pipeline {
   stages {
     stage('Build & Deploy') {
       steps {
-        sh "docker-compose up -d"
+        script {
+          gitInfo = checkout scm
+
+          VERSION = "dev"
+
+          if (env.TAG_NAME) {
+            VERSION = env.TAG_NAME
+          }
+
+          sh "docker-compose -e COMMIT_ID=${gitInfo.GIT_COMMIT} -e VERSION=${VERSION} up -d"
+        }
       }
     }
   }
