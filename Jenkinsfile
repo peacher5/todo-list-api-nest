@@ -13,7 +13,10 @@ pipeline {
             VERSION = env.TAG_NAME
           }
 
-          sh "docker-compose -e COMMIT_ID=${gitInfo.GIT_COMMIT} -e VERSION=${VERSION} up -d"
+          sh "echo COMMIT_ID=${COMMIT_ID} >> .env"
+          sh "echo VERSION=${VERSION} >> .env"
+
+          sh "docker-compose --env-file .env up -d"
         }
       }
     }
