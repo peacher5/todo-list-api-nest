@@ -1,5 +1,3 @@
-def image
-
 pipeline {
   agent any
 
