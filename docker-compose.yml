@@ -9,3 +9,4 @@ services:
       APP_NAME: todo-list-api-nest
       VERSION: ${VERSION}
       COMMIT_ID: ${COMMIT_ID}
+      PORT: 3000
